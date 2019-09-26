@@ -1,5 +1,6 @@
 #!/bin/bash
 # VirtualHost für Domain erstellen (falls noch nicht passiert)
+# source https://www.webhosterwissen.de/know-how/eigener-webserver/tutorial-apache-virtual-hosts-anlegen/
  
 # Schritt 1 = domain, directory und public directory abfragen
 if [ -z $1 ]; then
@@ -38,7 +39,7 @@ else
     sudo mkdir $DIR
 fi
 
-# Schritt 2 - Apache Config-Datei für domain.de erstellen
+# Schritt 3 - Apache Config-Datei für domain.de erstellen
 printf "
 <VirtualHost *:80>
     ServerAdmin admin@$DOMAIN
