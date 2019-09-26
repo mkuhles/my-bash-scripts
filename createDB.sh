@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# source: https://stackoverflow.com/questions/33470753/create-mysql-database-and-user-in-bash-script 
+
 MAINDB=$1
 PASSWDDB=$1
 
