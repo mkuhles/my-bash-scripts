@@ -28,6 +28,8 @@ fi
 DIR=/var/www/html/$DIR
 DOMAIN="$DOMAIN_NAME.test"
 
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/$DOMAIN.key -out /etc/ssl/certs/$DOMAIN.crt
+
 read -p "Please enter the public directory relativ to the project directory [$DIR]: " PUB_DIR
 if [ -z $PUB_DIR ]; then
     PUB_DIR=$DIR
@@ -83,8 +85,8 @@ printf "<IfModule mod_ssl.c>
 
         SSLEngine on
 
-        SSLCertificateFile  $HOME/ssl-certs/$DOMAIN.pem
-        SSLCertificateKeyFile $HOME/ssl-certs/$DOMAIN-key.pem
+        SSLCertificateFile  /etc/ssl/certs/$DOMAIN.crt
+        SSLCertificateKeyFile /etc/ssl/private/$DOMAIN.key
 
         <FilesMatch \"\\.(cgi|shtml|phtml|php)$\">
                 SSLOptions +StdEnvVars
